@@ -1,0 +1,23 @@
+name: 'build-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+
+jobs:
+  build-test: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          npm install
+      - run: |
+          npm run all
+      - uses: ./
+        with:
+          autify_personal_access_token: ${{ secrets.AUTIFY_PERSONAL_ACCESS_TOKEN }}
+          autify_project_id: ${{ secrets.AUTIFY_PROJECT_ID}}
+        env:
+          DD_API_KEY: ${{ secrets.DD_API_KEY}}

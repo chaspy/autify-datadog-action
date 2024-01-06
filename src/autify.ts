@@ -29,7 +29,7 @@ interface getResults {
 export function processGetResultsData(getResultsData: getResults[]): void {
   getResultsData.forEach((result, index) => {
     const status = result.status
-    const duration_sec = result.duration / 1000 // duration unit is mill seconds
+    const duration_sec = Math.floor(result.duration) / 1000 // duration unit is mill seconds
     const started_at = result.started_at // 2023-11-30T06:01:21.029Z, ISO8601 UTC
     const test_plan_name = result.test_plan.name
 

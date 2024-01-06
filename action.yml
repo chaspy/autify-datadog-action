@@ -7,9 +7,6 @@ inputs:
   autify_project_id:
     description: 'Autify Project ID'
     required: true
-  dd_api_token:
-    description: 'Datadog API Token'
-    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'

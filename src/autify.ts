@@ -36,10 +36,12 @@ export function processGetResultsData(getResultsData: getResults[]): void {
     const started_at = result.started_at // 2023-11-30T06:01:21.029Z, ISO8601 UTC
     const test_plan_name = result.test_plan.name
 
-    const started_at_unixtime = new Date(started_at).getTime() // Unix timestamp in milliseconds
+    const started_at_unixtime_second = Math.floor(
+      new Date(started_at).getTime() / 1000
+    ) // Unix timestamp in seconds
 
     const metrics: getResultsMetrics = {
-      timestamp: started_at_unixtime,
+      timestamp: started_at_unixtime_second,
       value: duration_sec,
       status: status,
       test_plan_name: test_plan_name

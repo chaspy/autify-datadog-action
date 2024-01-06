@@ -38,11 +38,10 @@ function processGetResultsData(getResultsData) {
 exports.processGetResultsData = processGetResultsData;
 function getResults(inputs) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log('Hello');
         // Load inputs
         const autify_personal_access_token = inputs.autify_personal_access_token;
         const autify_project_id = inputs.autify_project_id;
-        // const datadog_api_key = inputs.datadog_api_key
+        const datadog_api_key = inputs.datadog_api_key;
         const per_page = 100;
         const url = `https://app.autify.com/api/v1/projects/${autify_project_id}/results?per_page=${per_page}`;
         const headers = {

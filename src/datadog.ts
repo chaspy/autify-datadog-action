@@ -95,6 +95,12 @@ function isTimestampAvailable(unixTimestampSeconds: number): boolean {
   const tenMinutes = 10 * 60
   const oneHour = 60 * 60
 
+  console.log('debug')
+  console.log('currentTime')
+  console.log(currentTime)
+  console.log('unixTimestampSeconds')
+  console.log(unixTimestampSeconds)
+
   if (unixTimestampSeconds > currentTime + tenMinutes) {
     return false // 10 minutes in the future
   } else if (unixTimestampSeconds < currentTime - oneHour) {

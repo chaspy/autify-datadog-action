@@ -1,6 +1,6 @@
 #!/bin/bash
 autify web api list-results \
-  --project-id  229 \
+  --project-id 229 \
   --per-page 100 \
 #   --test-plan-id 60188
 

@@ -23,10 +23,9 @@ GitHub Action to send metrics of Autify to Datadog
 ## Inputs
 
 | Name                         | Description                                                                     | Required | Default |
-| ---------------------------- | ------------------------------------------------------------------------------- | -------- | ------- |
+| ---------------------------- | ------------------------------------------------------------------------------- | -------- | ------- | --- |
 | autify_personal_access_token | [Autify Personal Access Token](https://help.autify.com/docs/integrate-with-api) | Yes      |         |
-| autify_project_id            | Autify project id                                                               | Yes      |         |
-| datadog_api_key              | Datadog API Key                                                                 | Yes      |         |
+| autify_project_id            | Autify project id                                                               | Yes      |         | =   |
 
 ## Metrics
 

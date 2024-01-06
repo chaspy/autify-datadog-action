@@ -1,0 +1,15 @@
+name: 'autify-datadog-action'
+description: 'Send metrics of Autify to Datadog'
+inputs:
+  autify_personal_access_token:
+    description: 'Autify Personal Access Token'
+    required: true
+  autify_project_id:
+    description: 'Autify Project ID'
+    required: true
+  dd_api_token:
+    description: 'Datadog API Token'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

@@ -23,6 +23,9 @@ exports.getResults = exports.processGetResultsData = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(8757));
 function processGetResultsData(getResultsData) {
     getResultsData.forEach((result, index) => {
+        if (result.test_plan.name == null) {
+            return; // skip if test_plan.name is null. This happens when rerunning a test
+        }
         const status = result.status;
         const duration_sec = Math.floor(result.duration) / 1000; // duration unit is mill seconds
         const started_at = result.started_at; // 2023-11-30T06:01:21.029Z, ISO8601 UTC

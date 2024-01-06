@@ -38,11 +38,11 @@ function submitGetResultsMetrics(metrics) {
         `test_plan_name:${metrics.test_plan_name}`
     ];
     const durationSecondParams = createSubmitMetricsRequest('custom.autify_datadog_action.result.duration_second', metrics.timestamp, metrics.value, 'Second', tags);
-    const countParams = createSubmitMetricsRequest('custom.magicpod-datadog-action.test_case.count', metrics.timestamp, 1, 'Count', tags);
+    const countParams = createSubmitMetricsRequest('custom.autify-datadog-action.result.count', metrics.timestamp, 1, 'Count', tags);
     if (isTimestampAvailable(metrics.timestamp) &&
         !isStatusRunning(metrics.status)) {
-        submitMetrics('custom.magicpod-datadog-action.test_case.duration_second', durationSecondParams);
-        submitMetrics('custom.magicpod-datadog-action.test_case.count', countParams);
+        submitMetrics('custom.autify_datadog_action.result.duration_second', durationSecondParams);
+        submitMetrics('custom.autify-datadog-action.result.count', countParams);
     }
     else {
         console.log(`timestamp ${metrics.timestamp} is not available. skip to send metrics`);
@@ -57,11 +57,6 @@ function isTimestampAvailable(unixTimestampSeconds) {
     const currentTime = Math.floor(Date.now() / 1000);
     const tenMinutes = 10 * 60;
     const oneHour = 60 * 60;
-    console.log('debug');
-    console.log('currentTime');
-    console.log(currentTime);
-    console.log('unixTimestampSeconds');
-    console.log(unixTimestampSeconds);
     if (unixTimestampSeconds > currentTime + tenMinutes) {
         return false; // 10 minutes in the future
     }

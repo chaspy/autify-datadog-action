@@ -63,7 +63,7 @@ export function submitGetResultsMetrics(metrics: getResultsMetrics) {
   )
 
   const countParams = createSubmitMetricsRequest(
-    'custom.magicpod-datadog-action.test_case.count',
+    'custom.autify-datadog-action.result.count',
     metrics.timestamp,
     1,
     'Count',
@@ -75,10 +75,10 @@ export function submitGetResultsMetrics(metrics: getResultsMetrics) {
     !isStatusRunning(metrics.status)
   ) {
     submitMetrics(
-      'custom.magicpod-datadog-action.test_case.duration_second',
+      'custom.autify_datadog_action.result.duration_second',
       durationSecondParams
     )
-    submitMetrics('custom.magicpod-datadog-action.test_case.count', countParams)
+    submitMetrics('custom.autify-datadog-action.result.count', countParams)
   } else {
     console.log(
       `timestamp ${metrics.timestamp} is not available. skip to send metrics`

@@ -16,7 +16,7 @@ const run = (inputs) => __awaiter(void 0, void 0, void 0, function* () {
     // Get response from autify
     ;
     (() => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield (0, autify_1.listResults)(inputs);
+        const data = yield (0, autify_1.getResults)(inputs);
         // if (data) {
         //   processBatchRunsData(data, inputs)
         // } else {

@@ -29,10 +29,10 @@ GitHub Action to send metrics of Autify to Datadog
 
 ## Metrics
 
-| Name                                                  | Description                                                         | Type  | Unit   |
-| ----------------------------------------------------- | ------------------------------------------------------------------- | ----- | ------ |
-| `custom.autify_datadog_action.result.duration_second` | Time taken to execute the Batch Run.                                | Gauge | Second |
-| `custom.autify_datadog_action.result.count`           | Whether the Batch Run was run or not. always send 1 for started_at. | Gauge | Count  |
+| Name                                                  | Description                                                    | Type  | Unit   |
+| ----------------------------------------------------- | -------------------------------------------------------------- | ----- | ------ |
+| `custom.autify_datadog_action.result.duration_second` | Time taken to execute the test result.                         | Gauge | Second |
+| `custom.autify_datadog_action.result.count`           | Whether the test was run or not. always send 1 for started_at. | Gauge | Count  |
 
 ## Supported Tags
 

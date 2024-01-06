@@ -11,7 +11,7 @@ interface TestPlan {
   updated_at: string
 }
 
-interface ListResult {
+interface getResults {
   id: number
   status: string
   duration: number
@@ -23,7 +23,7 @@ interface ListResult {
   test_plan: TestPlan
 }
 
-export async function listResults(inputs: Inputs): Promise<ListResult | null> {
+export async function getResults(inputs: Inputs): Promise<getResults | null> {
   console.log('Hello')
 
   return null

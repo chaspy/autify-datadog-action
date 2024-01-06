@@ -23,10 +23,7 @@ interface ListResult {
   test_plan: TestPlan
 }
 
-export async function ListResults(
-  inputs: Inputs,
-  batch_run_number: number
-): Promise<ListResult | null> {
+export async function listResults(inputs: Inputs): Promise<ListResult | null> {
   console.log('Hello')
 
   return null

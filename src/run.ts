@@ -5,10 +5,11 @@ export const run = async (inputs: Inputs): Promise<void> => {
   // Get response from autify
   ;(async () => {
     const data = await getResults(inputs)
-    // if (data) {
-    //   processBatchRunsData(data, inputs)
-    // } else {
-    //   console.log('Error occurred, no data received')
-    // }
+    if (data) {
+      console.log(data)
+      // processBatchRunsData(data, inputs)
+    } else {
+      console.log('Error occurred, no data received')
+    }
   })()
 }

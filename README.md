@@ -10,8 +10,15 @@ GitHub Action to send metrics of Autify to Datadog
   with:
     autify_personal_access_token: ${{ secrets.AUTIFY_PERSONAL_ACCESS_TOKEN }}
     autify_project_id: ${{ secrets.AUTIFY_PROJECT_ID}}
-    datadog_api_key: ${{ secrets.DATADOG_API_KEY}}
+  env:
+    DD_API_KEY: ${{ secrets.DD_API_KEY }}
 ```
+
+## Environment variables
+
+| Name       | Description                                                                    | Required |
+| ---------- | ------------------------------------------------------------------------------ | -------- |
+| DD_API_KEY | [Datadog API Key](https://docs.datadoghq.com/account_management/api-app-keys/) | Yes      |
 
 ## Inputs
 

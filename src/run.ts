@@ -1,4 +1,4 @@
-import {Inputs, getResults} from './autify'
+import {Inputs, getResults, processGetResultsData} from './autify'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const run = async (inputs: Inputs): Promise<void> => {
@@ -6,8 +6,7 @@ export const run = async (inputs: Inputs): Promise<void> => {
   ;(async () => {
     const data = await getResults(inputs)
     if (data) {
-      console.log(data)
-      // processBatchRunsData(data, inputs)
+      processGetResultsData(data)
     } else {
       console.log('Error occurred, no data received')
     }

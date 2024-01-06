@@ -19,8 +19,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getResults = void 0;
+exports.getResults = exports.processGetResultsData = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(8757));
+function processGetResultsData(getResultsData) {
+    getResultsData.forEach((result, index) => {
+        const status = result.status;
+        const duration_sec = result.duration / 1000; // duration unit is mill seconds
+        const started_at = result.started_at; // 2023-11-30T06:01:21.029Z, ISO8601 UTC
+        const test_plan_name = result.test_plan.name;
+        const started_at_unixtime = new Date(started_at).getTime(); // Unix timestamp in milliseconds
+        const metrics = {
+            timestamp: started_at_unixtime,
+            value: duration_sec,
+            status: status,
+            test_plan_name: test_plan_name
+        };
+        // submitGetResultsMetrics(metrics)
+        console.log(metrics);
+    });
+}
+exports.processGetResultsData = processGetResultsData;
 function getResults(inputs) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Hello');
@@ -35,7 +53,9 @@ function getResults(inputs) {
             Authorization: `Bearer ${autify_personal_access_token}`
         };
         try {
-            const response = yield axios_1.default.get(url, { headers });
+            const response = yield axios_1.default.get(url, {
+                headers
+            });
             return response.data;
         }
         catch (error) {
@@ -129,8 +149,7 @@ const run = (inputs) => __awaiter(void 0, void 0, void 0, function* () {
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const data = yield (0, autify_1.getResults)(inputs);
         if (data) {
-            console.log(data);
-            // processBatchRunsData(data, inputs)
+            (0, autify_1.processGetResultsData)(data);
         }
         else {
             console.log('Error occurred, no data received');

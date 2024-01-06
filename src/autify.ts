@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
+import {getResultsMetrics} from './datadog'
 
 export type Inputs = {
   autify_personal_access_token: string
@@ -25,7 +26,28 @@ interface getResults {
   test_plan: TestPlan
 }
 
-export async function getResults(inputs: Inputs): Promise<getResults | null> {
+export function processGetResultsData(getResultsData: getResults[]): void {
+  getResultsData.forEach((result, index) => {
+    const status = result.status
+    const duration_sec = result.duration / 1000 // duration unit is mill seconds
+    const started_at = result.started_at // 2023-11-30T06:01:21.029Z, ISO8601 UTC
+    const test_plan_name = result.test_plan.name
+
+    const started_at_unixtime = new Date(started_at).getTime() // Unix timestamp in milliseconds
+
+    const metrics: getResultsMetrics = {
+      timestamp: started_at_unixtime,
+      value: duration_sec,
+      status: status,
+      test_plan_name: test_plan_name
+    }
+
+    // submitGetResultsMetrics(metrics)
+    console.log(metrics)
+  })
+}
+
+export async function getResults(inputs: Inputs): Promise<getResults[] | null> {
   console.log('Hello')
 
   // Load inputs
@@ -41,7 +63,9 @@ export async function getResults(inputs: Inputs): Promise<getResults | null> {
   }
 
   try {
-    const response: AxiosResponse<getResults> = await axios.get(url, {headers})
+    const response: AxiosResponse<getResults[]> = await axios.get(url, {
+      headers
+    })
     return response.data
   } catch (error) {
     console.log(`Error: ${error}`)

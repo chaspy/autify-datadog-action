@@ -28,7 +28,7 @@ interface getResults {
 
 export function processGetResultsData(getResultsData: getResults[]): void {
   getResultsData.forEach((result, index) => {
-    if (result.test_plan.name == null) {
+    if (result === null || result.test_plan === null) {
       return // skip if test_plan.name is null. This happens when rerunning a test
     }
 

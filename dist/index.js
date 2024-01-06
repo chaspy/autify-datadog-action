@@ -23,7 +23,7 @@ exports.getResults = exports.processGetResultsData = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(8757));
 function processGetResultsData(getResultsData) {
     getResultsData.forEach((result, index) => {
-        if (result.test_plan.name == null) {
+        if (result === null || result.test_plan === null) {
             return; // skip if test_plan.name is null. This happens when rerunning a test
         }
         const status = result.status;

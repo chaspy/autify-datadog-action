@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getResults = exports.processGetResultsData = void 0;
 const axios_1 = __importDefault(require("axios"));
+const datadog_1 = require("./datadog");
 function processGetResultsData(getResultsData) {
     getResultsData.forEach((result, index) => {
         if (result === null || result.test_plan === null) {
@@ -30,7 +31,7 @@ function processGetResultsData(getResultsData) {
             status: status,
             test_plan_name: test_plan_name
         };
-        // submitGetResultsMetrics(metrics)
+        (0, datadog_1.submitGetResultsMetrics)(metrics);
         console.log(metrics);
     });
 }

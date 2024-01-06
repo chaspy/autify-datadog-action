@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
-import {getResultsMetrics} from './datadog'
+import {getResultsMetrics, submitGetResultsMetrics} from './datadog'
 
 export type Inputs = {
   autify_personal_access_token: string
@@ -46,7 +46,7 @@ export function processGetResultsData(getResultsData: getResults[]): void {
       test_plan_name: test_plan_name
     }
 
-    // submitGetResultsMetrics(metrics)
+    submitGetResultsMetrics(metrics)
     console.log(metrics)
   })
 }

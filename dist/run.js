@@ -17,11 +17,13 @@ const run = (inputs) => __awaiter(void 0, void 0, void 0, function* () {
     ;
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const data = yield (0, autify_1.getResults)(inputs);
-        // if (data) {
-        //   processBatchRunsData(data, inputs)
-        // } else {
-        //   console.log('Error occurred, no data received')
-        // }
+        if (data) {
+            console.log(data);
+            // processBatchRunsData(data, inputs)
+        }
+        else {
+            console.log('Error occurred, no data received');
+        }
     }))();
 });
 exports.run = run;
